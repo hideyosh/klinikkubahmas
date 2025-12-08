@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\ObatResource\Pages;
+namespace App\Filament\Resources\DokterResource\Pages;
 
-use App\Filament\Resources\ObatResource;
+use App\Filament\Resources\DokterResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListObats extends ListRecords
+class ListDokters extends ListRecords
 {
-    protected static string $resource = ObatResource::class;
-    
+    protected static string $resource = DokterResource::class;
+
     protected function getHeaderActions(): array
     {
         return [
