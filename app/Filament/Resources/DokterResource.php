@@ -27,9 +27,8 @@ class DokterResource extends Resource
         return $form
             ->schema([
 
-                Forms\Components\Section::make('Informasi User')
-                    ->relationship('user')   // ← penting!
-                    ->description('Data akun yang digunakan dokter untuk login')
+                Forms\Components\Section::make('Informasi Akun')
+                    ->relationship('user')
                     ->schema([
 
                         Forms\Components\TextInput::make('name')
@@ -70,7 +69,6 @@ class DokterResource extends Resource
                             ->label('Status')
                             ->options([
                                 'aktif' => 'Aktif',
-                                'cuti' => 'Cuti',
                                 'nonaktif' => 'Nonaktif',
                             ])
                             ->required(),
@@ -94,17 +92,20 @@ class DokterResource extends Resource
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([
                         'success' => 'aktif',
-                        'warning' => 'cuti',
                         'danger'  => 'nonaktif',
                     ])
                     ->label('Status'),
-                Tables\Columns\TextColumn::make('created_at')->label('Dibuat')->date('d M Y'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('spesialis')
                     ->options([
                         'umum' => 'Umum',
                         'gigi' => 'Gigi',
+                    ]),
+                Tables\Filters\SelectFilter::make('status')
+                    ->options([
+                        'aktif' => 'Aktif',
+                        'nonaktif' => 'Non-aktif',
                     ]),
             ])
             ->actions([
