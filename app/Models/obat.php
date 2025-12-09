@@ -9,8 +9,6 @@ class Obat extends Model
 {
     use HasFactory;
 
-    protected $table = 'obats';
-
     // Kolom yang boleh diisi secara mass-assignment
     protected $fillable = [
         'nama_obat',
