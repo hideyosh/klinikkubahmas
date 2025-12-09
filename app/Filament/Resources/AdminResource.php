@@ -25,7 +25,6 @@ class AdminResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            // ->withoutGlobalScopes([SoftDeletingScope::class])
             ->where('role', 'admin');
     }
 
