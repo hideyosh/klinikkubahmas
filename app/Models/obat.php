@@ -24,4 +24,8 @@ class Obat extends Model
         'stok' => 'integer',
         'harga' => 'float',
     ];
+    public function RMedis()
+    {
+        return $this->hasMany(RMedis::class, 'id', 'nama_obat');
+    }
 }
