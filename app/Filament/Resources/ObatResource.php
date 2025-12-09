@@ -14,8 +14,8 @@ class ObatResource extends Resource
 {
     protected static ?string $model = Obat::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Data Master';
+    protected static ?string $navigationIcon = 'heroicon-o-beaker';
+    protected static ?string $navigationGroup = 'Management Obat';
     protected static ?string $navigationLabel = 'Obat';
 
     public static function form(Form $form): Form

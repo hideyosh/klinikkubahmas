@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggalLahir')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->text('alamat')->nullable();
-            $table->string('no_hp', 20)->nullable();
+            $table->string('telepon', 20)->nullable();
             $table->timestamps();
         });
     }

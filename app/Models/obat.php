@@ -9,8 +9,6 @@ class Obat extends Model
 {
     use HasFactory;
 
-    protected $table = 'obats';
-
     // Kolom yang boleh diisi secara mass-assignment
     protected $fillable = [
         'nama_obat',
@@ -24,8 +22,4 @@ class Obat extends Model
         'stok' => 'integer',
         'harga' => 'float',
     ];
-    public function RMedis()
-    {
-        return $this->hasMany(RMedis::class, 'id', 'nama_obat');
-    }
 }

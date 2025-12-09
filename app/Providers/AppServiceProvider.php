@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Traits\HasCustomIcons;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use HasCustomIcons;
     /**
      * Register any application services.
      */
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // self::registerIcons();
     }
 }
