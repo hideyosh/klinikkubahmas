@@ -31,7 +31,7 @@ class AdminResource extends Resource
 
     public static function getLabel(): string
     {
-        return 'Admin';
+        return 'admin';
     }
 
     public static function form(Form $form): Form
@@ -78,8 +78,13 @@ class AdminResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus Admin')
+                    ->modalDescription('Apakah Anda yakin ingin menghapus data admin ini? Tindakan ini tidak dapat dibatalkan.')
+                    ->modalSubmitActionLabel('Ya, Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -99,6 +104,7 @@ class AdminResource extends Resource
     {
         return [
             'index' => Pages\ListAdmins::route('/'),
+            'view' => Pages\ViewAdmin::route('/{record}/'),
             'create' => Pages\CreateAdmin::route('/create'),
             'edit' => Pages\EditAdmin::route('/{record}/edit'),
         ];

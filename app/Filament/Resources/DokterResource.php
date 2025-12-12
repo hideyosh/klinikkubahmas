@@ -28,30 +28,31 @@ class DokterResource extends Resource
             ->schema([
 
                 Forms\Components\Section::make('Informasi Akun')
-                    ->relationship('user')
                     ->schema([
+                        Forms\Components\Group::make()
+                            ->relationship('user')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->label('Nama Dokter')
+                                    ->required(),
 
-                        Forms\Components\TextInput::make('name')
-                            ->label('Nama Dokter')
-                            ->required(),
+                                Forms\Components\TextInput::make('email')
+                                    ->label('Email')
+                                    ->email()
+                                    ->unique(ignoreRecord: true)
+                                    ->required(),
 
-                        Forms\Components\TextInput::make('email')
-                            ->label('Email')
-                            ->email()
-                            ->unique(ignoreRecord: true)
-                            ->required(),
+                                Forms\Components\TextInput::make('password')
+                                    ->label('Password')
+                                    ->password()
+                                    ->required(fn ($livewire) => $livewire instanceof Pages\CreateDokter)  // hanya wajib saat create
+                                    ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null)
+                                    ->dehydrated(fn ($state) => filled($state)),
 
-                        Forms\Components\TextInput::make('password')
-                            ->label('Password')
-                            ->password()
-                            ->required(fn ($livewire) => $livewire instanceof Pages\CreateDokter)  // hanya wajib saat create
-                            ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null)
-                            ->dehydrated(fn ($state) => filled($state)),
-
-                        Forms\Components\Hidden::make('role')
-                            ->default('dokter'),
-                    ])
-                    ->columns(2),
+                                Forms\Components\Hidden::make('role')
+                                    ->default('dokter'),
+                            ])->columns(2),
+                    ]),
 
 
                 Forms\Components\Section::make('Detail Dokter')

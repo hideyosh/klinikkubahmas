@@ -18,6 +18,8 @@ class KunjunganResource extends Resource
     protected static ?string $model = Kunjungan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Kunjungan & Rekam Medis';
+    protected static ?string $navigationLabel = 'Kunjungan Pasien';
 
     public static function form(Form $form): Form
     {

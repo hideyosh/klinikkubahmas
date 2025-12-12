@@ -4,6 +4,7 @@ namespace App\Filament\Resources\DokterResource\Pages;
 
 use App\Filament\Resources\DokterResource;
 use Filament\Actions;
+use app\Models\User;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateDokter extends CreateRecord
@@ -13,7 +14,7 @@ class CreateDokter extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         // Create user
-        $user = \App\Models\User::create([
+        $user = User::create([
             'name'     => $data['user']['name'],
             'email'    => $data['user']['email'],
             'password' => bcrypt($data['user']['password']),

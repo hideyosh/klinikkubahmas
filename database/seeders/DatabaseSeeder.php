@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dokter;
+use App\Models\Pasien;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,11 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        Pasien::factory(10)->create();
+
         $this->call(UserSeeder::class);
-        Dokter::create([
-            'user_id' => 2,
-            'spesialis' => 'umum',
-            'status' => 'aktif'
-        ]);
     }
 }
